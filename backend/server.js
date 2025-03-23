@@ -8,8 +8,15 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/',(req, res) => {
-    res.send('Backend is working');
+app.get('/api/products', async (req, res) => {
+    try{
+      const products = await Product.find({});
+      res.status(200).json({ success: true, data: products });
+    }
+    catch(error){
+      console.error("Error fetching the products", error);
+      res.status(500).json({ success: false, message: "Server error" });
+  }
 });
 
 app.post("/api/products", async(req, res) => {
@@ -18,7 +25,7 @@ app.post("/api/products", async(req, res) => {
     return res.status(400).json({ success :false,message: "Please fill all fields" });
   }
 
-  const newProduct = new Product(product);
+ const newProduct = new Product(product);
 
   try {
     await newProduct.save();
@@ -29,9 +36,21 @@ app.post("/api/products", async(req, res) => {
   }
 });
 
+
+app.delete("/api/products/:id", async (req, res) => {
+  const {id} = req.params;
+  try{
+    await Product.findByIdAndDelete(id);
+    res.status(200).json({ success: true, message: "Product deleted" });
+  }catch(error){
+    console.error("Error deleting the product", error);
+    res.status(404).json({ success: false, message: "product Not found!" });
+  }  
+});
+
 app.listen(3000, () => {
     connectDB();
-  console.log('Server is running on http://localhost:3000');
+  console.log('Server is running on http://localhost:3000/api/products');
 });
 
 
