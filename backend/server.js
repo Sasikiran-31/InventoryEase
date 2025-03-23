@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from 'dotenv'
 import { connectDB } from "./config/db.js";
 import Product from "./models/product.model.js";
+import mongoose, { mongo } from "mongoose";
 dotenv.config();
 
 const app = express();
@@ -47,6 +48,26 @@ app.delete("/api/products/:id", async (req, res) => {
     res.status(404).json({ success: false, message: "product Not found!" });
   }  
 });
+
+
+app.put("/api/products/:id", async (req, res) => {
+  const {id} = req.params;
+  const product = req.body;
+
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).send("No product with that id");
+  }
+
+  try{
+    const updatedProduct = await Product.findByIdAndUpdate(id, product, {new: true});
+      console.log(updatedProduct);
+    res.status(200).json({ success: true, data: updatedProduct });
+  }catch(error){
+    console.error("Error updating the product", error);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+}
+);
 
 app.listen(3000, () => {
     connectDB();
