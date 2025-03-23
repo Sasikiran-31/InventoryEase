@@ -7,14 +7,15 @@ const app = express();
 
 
 
-app.get('/products',(req, res) => {
+app.get('/',(req, res) => {
     res.send('Backend is working');
 });
 
 
+
 app.listen(3000, () => {
     connectDB();
-  console.log('Server is running on http://localhost:3000 ');
+  console.log('Server is running on http://localhost:3000');
 });
 
 
