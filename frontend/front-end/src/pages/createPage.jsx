@@ -1,6 +1,8 @@
 import { Container, Stack, Typography, TextField, Box, Button } from "@mui/material";
 import { useState } from "react";
 
+import { useProduct } from "../store/product.js";
+
 const createPage = () => {
     const [product, setProduct] = useState({
         name: "",
@@ -8,8 +10,12 @@ const createPage = () => {
         image: ""
     });
 
-    const handleProduct = () => {
-        console.log(product);
+    const { createProduct } = useProduct();
+    const handleProduct = async () => {
+        const { success , message } = await createProduct(product);
+        console.log('success:', success)
+        console.log('message:', message)
+        setProduct({name: "", price: "", image: ""});
     };
 
     return (
