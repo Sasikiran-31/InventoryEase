@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 5000;
 app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
-    connectDB();
-  console.log("Server is running on http://localhost:5000",+ PORT);
+  connectDB();
+  console.log("Server is running on http://localhost:5000", + PORT);
 });
 
 
