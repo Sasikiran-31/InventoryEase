@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "front-end",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
