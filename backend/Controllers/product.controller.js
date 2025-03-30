@@ -8,7 +8,7 @@ export const getProducts = async (req, res) => {
     res.status(200).json({ success: true, data: products });
   }
   catch (error) {
-    console.error("Error fetching the products", error);
+    console.log("Error fetching the products", error);
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
