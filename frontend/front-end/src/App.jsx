@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box} from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import CreatePage from "./pages/createPage.jsx";
 import HomePage from "./pages/homePage.jsx";
