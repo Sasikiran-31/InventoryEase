@@ -1,2 +1,3 @@
-# MERN_proj
+# InventoryEase
+
  
