@@ -17,12 +17,13 @@ const NavigationBar = () => {
     <Container maxWidth="sm" sx={{ padding: 1, bgcolor: theme.palette.background.paper }}>
       <Box
         sx={{
-          height: '4rem',
+          height: '2rem',
           fontSize: '1.5rem',
           fontWeight: 'bold',
           display: "flex",
           alignItems: 'center',
           justifyContent: 'space-between',
+          
         }}
       >
         <Typography
@@ -35,9 +36,9 @@ const NavigationBar = () => {
             WebkitTextFillColor: 'transparent',
             display: 'flex',
             alignItems: 'center',
-          }}
+            }}
         >
-          <CottageOutlinedIcon fontSize="large" sx={{ marginLeft: 1} } />
+          <CottageOutlinedIcon fontSize="large" sx={{ marginLeft: 0} } />
         </Typography>
 
         <Stack direction="row" spacing={2} alignItems="center">
