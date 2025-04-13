@@ -1,7 +1,8 @@
-import { Container, Stack, Typography, TextField, Box, Button, Snackbar, Alert } from "@mui/material";
+import { Container, Stack, Typography, TextField, Box, Button, Snackbar, Alert, useStepContext } from "@mui/material";
 import { useState } from "react";
+import {  useNavigate } from "react-router-dom";
+import { useStore } from "../store/product.js";
 
-import { useProduct } from "../store/product.js";
 
 const CreatePage = () => {
   const [product, setProduct] = useState({
@@ -10,16 +11,22 @@ const CreatePage = () => {
     image: "",
   });
 
-  const { createProduct } = useProduct();
+  const { createProducts } = useStore();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("success"); // or "error"
-
+  const navigate = useNavigate();
+  // Client side logic for handling "Add product" button
   const handleProduct = async () => {
-    const { success, message } = await createProduct(product);
+    const { success, message } = await createProducts(product);
     setAlertMessage(message);
     setAlertSeverity(success ? "success" : "error");
     setOpenSnackbar(true);
+
+    // Used to go back to the homepage
+    if (success){
+      navigate("/");
+    }
   };
 
   const handleCloseSnackbar = (event, reason) => {
@@ -32,7 +39,7 @@ const CreatePage = () => {
   return (
     <Container maxWidth="sm">
       <Stack spacing={3}>
-        <Typography variant="h3" textAlign="center" mb={8}>
+        <Typography variant="h3" textAlign="center" mb={8} sx={{color:'ButtonFace'}}> 
           Create a new product
         </Typography>
 
@@ -44,6 +51,7 @@ const CreatePage = () => {
               variant="outlined"
               value={product.name}
               onChange={(event) => setProduct({ ...product, name: event.target.value })}
+              
             />
             <TextField
               id="price"

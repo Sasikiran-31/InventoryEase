@@ -14,11 +14,12 @@ const getTheme = (mode) =>
         main: mode === 'light' ? '#1976d2' : '#90caf9',
       },
       background: {
-        default: mode === 'light' ? '#eeffb8' : '#121212',
+        default: mode === 'light' ? '#00008B' : '#121212',
         paper: mode === 'light' ? '#121212' : '#1e1e1e',
       },
       text: {
-        primary: mode === 'light' ? '#000000' : '#ffffff',
+        primary: mode === 'light' ? '#ffffff' : '#ffffff',
+        secondary: mode=== 'light' ? '#ffffff' : '#ffffff'
       },
     },
   });
