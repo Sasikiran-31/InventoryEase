@@ -16,7 +16,7 @@ const HomePage = () => {
 
   return (
     <Container maxWidth="xl" sx={{ py: 12 }}>
-      <Box display="flex" flexDirection="column" gap={4} alignItems="center">
+      <Box display="flex" className="x" flexDirection="column" gap={4} alignItems="center">
         <Typography
           variant="h4"
           fontWeight="bold"
