@@ -1,6 +1,6 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { createContext, useState, useMemo, useContext } from 'react';
-import { CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createContext, useState, useMemo, useContext } from "react";
+import { CssBaseline } from "@mui/material";
 
 const ThemeContext = createContext();
 
@@ -11,26 +11,25 @@ const getTheme = (mode) =>
     palette: {
       mode,
       primary: {
-        main: mode === 'light' ? '#1976d2' : '#90caf9',
+        main: mode === "light" ? "#1976d2" : "#90caf9",
       },
       background: {
-        default: mode === 'light' ? '#00008B' : '#121212',
-        paper: mode === 'light' ? '#121212' : '#1e1e1e',
+        default: mode === "light" ? "#ffffff" : "#121212",
+        paper: mode === "light" ? "#121212" : "#1e1e1e",
       },
       text: {
-        primary: mode === 'light' ? '#ffffff' : '#ffffff',
-        secondary: mode=== 'light' ? '#ffffff' : '#ffffff'
+        secondary: mode === "light" ? "#000000" : "#ffffff",
       },
     },
   });
 
 export const ThemeContextProvider = ({ children }) => {
-  const [colorMode, setColorMode] = useState('light');
+  const [colorMode, setColorMode] = useState("light");
 
   const theme = useMemo(() => getTheme(colorMode), [colorMode]);
 
   const toggleColorMode = () => {
-    setColorMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    setColorMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
 
   return (
