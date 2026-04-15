@@ -21,7 +21,7 @@ const HomePage = () => {
           variant="h4"
           fontWeight="bold"
           sx={{
-            background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.secondary.main})`,
+            background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.secondary.main})`,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textAlign: 'center',

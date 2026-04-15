@@ -52,9 +52,9 @@ const ProductTile = ({ product }) => {
         maxWidth: 140,
         maxHeight: 260,
         boxShadow: theme.shadows[2],
-        transition: "transform 0.3s, box-shadow 0.3s",
+        transition: "transform 0.6s, box-shadow 0.3s",
         "&:hover": {
-          transform: "translateY(-5px)",
+          transform: "translateY(5px)",
           boxShadow: theme.shadows[8],
         },
       }}

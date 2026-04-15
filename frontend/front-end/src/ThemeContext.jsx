@@ -14,7 +14,7 @@ const getTheme = (mode) =>
         main: mode === "light" ? "#1976d2" : "#90caf9",
       },
       background: {
-        default: mode === "light" ? "#ffffff" : "#121212",
+        default: mode === "light" ? "#000000" : "#ffffff",
         paper: mode === "light" ? "#121212" : "#1e1e1e",
       },
       text: {

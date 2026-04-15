@@ -1,7 +1,12 @@
+import express from "express";
 import Product from "../models/product.model.js";
 import mongoose from "mongoose";
 
 
+const router = express.Router();
+
+
+// THe get mapping method to get all products
 export const getProducts = async (req, res) => {
   try {
     const products = await Product.find({});
@@ -13,6 +18,7 @@ export const getProducts = async (req, res) => {
   }
 };
 
+// the post mapping method to post new product
 export const createProduct = async (req, res) => {
   const product = req.body;
   if (!product.name || !product.price || !product.image) {
@@ -30,6 +36,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
+// THe delete mapping method to delete a product with an id
 export const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
@@ -41,6 +48,8 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
+
+// The update mapping method to update a product using id
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
   const product = req.body;
@@ -58,3 +67,22 @@ export const updateProduct = async (req, res) => {
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };
+
+
+// Testing stuff
+export const homeAPI = async (req, res) => {
+  try{
+      const result = await fetch('https://api.github.com/users/Sasikiran-31');
+
+      const data = await result.json();
+      console.log(data);
+      return res.status(200).json({
+        success: true,
+        data : data.name
+      });
+
+  } catch(err){
+    console.log(err);
+    return res.status(500).json({success: false, message: "Server error "});
+  }
+}
